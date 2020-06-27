@@ -20,7 +20,7 @@ pub struct Solution {
 impl Solution {
     pub fn run(&self) -> u64 {
         fibonacci()
-            .filter(|v| v % 2 == 0)
+            .filter(|val| val % 2 == 0)
             .take_while(|val| val < &self.limit)
             .sum()
     }
