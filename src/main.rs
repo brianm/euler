@@ -2,6 +2,7 @@ use anyhow::Result;
 use clap::Clap;
 mod p0001;
 mod p0002;
+mod p0003;
 
 #[derive(Clap)]
 #[clap(version = "1.0", author = "Brian McCallister <brianm@skife.org>")]
@@ -17,6 +18,9 @@ enum Command {
 
     #[clap(name = "2")]
     Two(p0002::Solution),
+
+    #[clap(name = "3")]
+    Three(p0003::Solution),
 }
 
 fn main() -> Result<()> {
@@ -25,5 +29,6 @@ fn main() -> Result<()> {
     match args.subcmd {
         Command::One(sol) => Ok(println!("{}", sol.run())),
         Command::Two(sol) => Ok(println!("{}", sol.run())),
+        Command::Three(sol) => Ok(println!("{}", sol.run())),
     }
 }
