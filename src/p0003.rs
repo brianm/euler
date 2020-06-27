@@ -64,11 +64,9 @@ mod tests {
         assert_eq!(f.next(), None);
     }
 
-    #[test] 
+    #[test]
     fn test_run() {
-        let s = Solution {
-            number: 13195
-        };
+        let s = Solution { number: 13195 };
         assert_eq!(s.run(), 29);
     }
 }
