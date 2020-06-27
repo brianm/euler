@@ -1,5 +1,6 @@
 use clap::Clap;
 
+/// Multiples of 3 and 5
 #[derive(Clap)]
 pub struct Solution {
     #[clap(short, long, default_value = "1000")]
