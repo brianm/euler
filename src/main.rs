@@ -20,7 +20,7 @@ fn main() -> Result<()> {
 
     match args.subcmd {
         Command::One(sol) => {
-            Ok(println!("{}", sol.run()?))
+            Ok(println!("{}", sol.run()))
         }
     }
 }
