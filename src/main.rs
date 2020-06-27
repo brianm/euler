@@ -1,5 +1,5 @@
-use clap::Clap;
 use anyhow::Result;
+use clap::Clap;
 mod p0001;
 mod p0002;
 
@@ -11,11 +11,11 @@ struct Args {
 }
 
 #[derive(Clap)]
-enum Command {    
-    #[clap(name="1")]
+enum Command {
+    #[clap(name = "1")]
     One(p0001::Solution),
-    
-    #[clap(name="2")]
+
+    #[clap(name = "2")]
     Two(p0002::Solution),
 }
 
@@ -23,11 +23,7 @@ fn main() -> Result<()> {
     let args: Args = Args::parse();
 
     match args.subcmd {
-        Command::One(sol) => {
-            Ok(println!("{}", sol.run()))
-        }
-        Command::Two(sol) => {
-            Ok(println!("{}", sol.run()))
-        }
+        Command::One(sol) => Ok(println!("{}", sol.run())),
+        Command::Two(sol) => Ok(println!("{}", sol.run())),
     }
 }
