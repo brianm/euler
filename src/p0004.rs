@@ -1,6 +1,7 @@
 use clap::Clap;
 
 /// Largest palindrome product
+/// 
 /// A palindromic number reads the same both ways. The
 /// largest palindrome made from the product of two
 /// 2-digit numbers is 9009 = 91 × 99.
@@ -15,7 +16,6 @@ pub struct Solution {
 impl Solution {
     pub fn run(&self) -> u64 {
         let mut max = 0;
-
         for i in 1..self.limit {
             for j in 1..self.limit {
                 let product = i * j;
