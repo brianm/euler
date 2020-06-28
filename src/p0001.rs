@@ -11,9 +11,9 @@ impl Solution {
     pub fn run(&self) -> u64 {
         let mut sum = 0;
         for i in 1..self.limit {
-            sum = sum + if (i % 3 == 0) || (i % 5 == 0) { i } else { 0 }
+            sum += if (i % 3 == 0) || (i % 5 == 0) { i } else { 0 }
         }
-        return sum;
+        sum
     }
 }
 

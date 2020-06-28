@@ -1,5 +1,4 @@
 use clap::Clap;
-use primal;
 
 /// Largest prime factor
 ///
@@ -33,7 +32,7 @@ impl Iterator for Factors {
         }
         loop {
             if self.n % self.last_prime == 0 {
-                self.n = self.n / self.last_prime;
+                self.n /= self.last_prime;
                 return Some(self.last_prime);
             }
 
@@ -44,7 +43,7 @@ impl Iterator for Factors {
 
 fn factors(n: usize) -> Factors {
     Factors {
-        n: n,
+        n,
         last_prime: 2,
         primes: primal::Primes::all(),
     }
