@@ -27,25 +27,9 @@ impl Solution {
 }
 
 fn is_palindrome(num: &u64) -> bool {    
-    let d = digits(*num);
-    for i in 0..(d.len() / 2) {
-        if d[i] != d[d.len() - 1 - i] {
-            return false;
-        }
-    }
-    true
-}
-
-fn digits(n: u64) -> Vec<u64> {
-    fn recur(n: u64, rs: &mut Vec<u64>) {
-        if n >= 10 {
-            recur(n / 10, rs);
-        }
-        rs.push(n % 10);
-    }
-    let mut rs = Vec::new();
-    recur(n, &mut rs);
-    rs
+    let forward = num.to_string();    
+    let reverse = forward.chars().rev().collect::<String>();
+    return forward == reverse;
 }
 
 #[cfg(test)]

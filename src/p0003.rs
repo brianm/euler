@@ -1,4 +1,5 @@
 use clap::Clap;
+use super::primes;
 
 /// Largest prime factor
 ///
@@ -13,49 +14,18 @@ pub struct Solution {
 
 impl Solution {
     pub fn run(&self) -> usize {
-        factors(self.number).last().unwrap_or(0)
-    }
-}
-
-struct Factors {
-    n: usize,
-    last_prime: usize,
-    primes: primal::Primes,
-}
-
-impl Iterator for Factors {
-    type Item = usize;
-
-    fn next(&mut self) -> Option<usize> {
-        if self.n == 0 || self.n == 1 {
-            return None;
-        }
-        loop {
-            if self.n % self.last_prime == 0 {
-                self.n /= self.last_prime;
-                return Some(self.last_prime);
-            }
-
-            self.last_prime = self.primes.next().expect("unable to get next prime!");
-        }
-    }
-}
-
-fn factors(n: usize) -> Factors {
-    Factors {
-        n,
-        last_prime: 2,
-        primes: primal::Primes::all(),
+        primes::factors(self.number).last().unwrap_or(0)
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use super::primes;
 
     #[test]
     fn test_fib() {
-        let mut f = factors(13195);
+        let mut f = primes::factors(13195);
         assert_eq!(f.next(), Some(5));
         assert_eq!(f.next(), Some(7));
         assert_eq!(f.next(), Some(13));

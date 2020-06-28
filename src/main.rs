@@ -1,8 +1,5 @@
 use clap::Clap;
-mod p0001;
-mod p0002;
-mod p0003;
-mod p0004;
+use euler;
 
 #[derive(Clap)]
 #[clap(version = "1.0", author = "Brian McCallister <brianm@skife.org>")]
@@ -14,16 +11,19 @@ struct Args {
 #[derive(Clap)]
 enum Command {
     #[clap(name = "1")]
-    One(p0001::Solution),
+    One(euler::p0001::Solution),
 
     #[clap(name = "2")]
-    Two(p0002::Solution),
+    Two(euler::p0002::Solution),
 
     #[clap(name = "3")]
-    Three(p0003::Solution),
+    Three(euler::p0003::Solution),
 
     #[clap(name = "4")]
-    Four(p0004::Solution),
+    Four(euler::p0004::Solution),
+
+    #[clap(name = "5")]
+    Five(euler::p0005::Solution),
 }
 
 fn main() {
@@ -34,5 +34,6 @@ fn main() {
         Command::Two(sol) => println!("{}", sol.run()),
         Command::Three(sol) => println!("{}", sol.run()),
         Command::Four(sol) => println!("{}", sol.run()),
+        Command::Five(sol) => println!("{}", sol.run()),
     }
 }
