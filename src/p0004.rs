@@ -1,12 +1,14 @@
 use clap::Clap;
+use itertools::Itertools;
 
 /// Largest palindrome product
-/// 
+///
 /// A palindromic number reads the same both ways. The
 /// largest palindrome made from the product of two
 /// 2-digit numbers is 9009 = 91 × 99.
 ///
-/// Find the largest palindrome made from the product of two 3-digit numbers.
+/// Find the largest palindrome made from the product 
+/// of two 3-digit numbers.
 #[derive(Clap)]
 pub struct Solution {
     #[clap(short, long, default_value = "1000")]
@@ -15,17 +17,23 @@ pub struct Solution {
 
 impl Solution {
     pub fn run(&self) -> u64 {
-        let mut max = 0;
-        for i in 1..self.limit {
-            for j in 1..self.limit {
-                let product = i * j;
-                if product > max && is_palindrome(product) {
-                    max = product;
-                }
-            }
-        }
-        max
+        (1..self.limit)
+            .permutations(2)
+            .map(|v| v[0] * v[1])
+            .filter(is_palindrome)
+            .max()
+            .unwrap_or(0)
     }
+}
+
+fn is_palindrome(num: &u64) -> bool {    
+    let d = digits(*num);
+    for i in 0..(d.len() / 2) {
+        if d[i] != d[d.len() - 1 - i] {
+            return false;
+        }
+    }
+    true
 }
 
 fn digits(n: u64) -> Vec<u64> {
@@ -39,15 +47,6 @@ fn digits(n: u64) -> Vec<u64> {
     recur(n, &mut rs);
     rs
 }
-fn is_palindrome(num: u64) -> bool {
-    let d = digits(num);
-    for i in 0..(d.len() / 2) {
-        if d[i] != d[d.len() - 1 - i] {
-            return false;
-        }
-    }
-    true
-}
 
 #[cfg(test)]
 mod tests {
@@ -55,12 +54,15 @@ mod tests {
 
     #[test]
     fn test_is_palindrome() {
-        assert!(is_palindrome(1));
-        assert!(is_palindrome(11));
-        assert!(is_palindrome(121));
-        assert!(is_palindrome(1221));
-        assert!(is_palindrome(12321));
-        assert!(is_palindrome(123321));
+        assert!(is_palindrome(&1));
+        assert!(is_palindrome(&11));
+        assert!(is_palindrome(&121));
+        assert!(is_palindrome(&1221));
+        assert!(is_palindrome(&12321));
+        assert!(is_palindrome(&123321));
+
+        assert!(!is_palindrome(&12));
+        assert!(!is_palindrome(&123));
     }
 
     #[test]
