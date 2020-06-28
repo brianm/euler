@@ -19,7 +19,7 @@ impl Solution {
         for i in 1..self.limit {
             for j in 1..self.limit {
                 let product = i * j;
-                if is_palindrome(product) && product > max {
+                if product > max && is_palindrome(product) {
                     max = product;
                 }
             }
