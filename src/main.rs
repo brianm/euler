@@ -1,5 +1,13 @@
 use clap::Clap;
 
+mod p0001;
+mod p0002;
+mod p0003;
+mod p0004;
+mod p0005;
+mod primes;
+
+
 #[derive(Clap)]
 #[clap(version = "1.0", author = "Brian McCallister <brianm@skife.org>")]
 struct Args {
@@ -10,19 +18,19 @@ struct Args {
 #[derive(Clap)]
 enum Command {
     #[clap(name = "1")]
-    One(euler::p0001::Solution),
+    One(p0001::Solution),
 
     #[clap(name = "2")]
-    Two(euler::p0002::Solution),
+    Two(p0002::Solution),
 
     #[clap(name = "3")]
-    Three(euler::p0003::Solution),
+    Three(p0003::Solution),
 
     #[clap(name = "4")]
-    Four(euler::p0004::Solution),
+    Four(p0004::Solution),
 
     #[clap(name = "5")]
-    Five(euler::p0005::Solution),
+    Five(p0005::Solution),
 }
 
 fn main() {
