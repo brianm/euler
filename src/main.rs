@@ -1,5 +1,4 @@
 use clap::Clap;
-use euler;
 
 #[derive(Clap)]
 #[clap(version = "1.0", author = "Brian McCallister <brianm@skife.org>")]

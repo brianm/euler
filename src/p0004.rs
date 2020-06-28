@@ -19,7 +19,7 @@ impl Solution {
     pub fn run(&self) -> u64 {
         (1..self.limit)
             .permutations(2)
-            .map(|v| v[0] * v[1])
+            .map(|v| v[0] * v[1])            
             .filter(is_palindrome)
             .max()
             .unwrap_or(0)
@@ -29,7 +29,7 @@ impl Solution {
 fn is_palindrome(num: &u64) -> bool {    
     let forward = num.to_string();    
     let reverse = forward.chars().rev().collect::<String>();
-    return forward == reverse;
+    forward == reverse
 }
 
 #[cfg(test)]

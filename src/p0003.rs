@@ -20,18 +20,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::primes;
-
-    #[test]
-    fn test_fib() {
-        let mut f = primes::factors(13195);
-        assert_eq!(f.next(), Some(5));
-        assert_eq!(f.next(), Some(7));
-        assert_eq!(f.next(), Some(13));
-        assert_eq!(f.next(), Some(29));
-        assert_eq!(f.next(), None);
-    }
+    use super::*;    
 
     #[test]
     fn test_run() {

@@ -29,3 +29,18 @@ pub fn factors(n: usize) -> PrimeFactors {
         primes: primal::Primes::all(),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*; 
+    
+    #[test]
+    fn test_fib() {
+        let mut f = factors(13195);
+        assert_eq!(f.next(), Some(5));
+        assert_eq!(f.next(), Some(7));
+        assert_eq!(f.next(), Some(13));
+        assert_eq!(f.next(), Some(29));
+        assert_eq!(f.next(), None);
+    }
+}
