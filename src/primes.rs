@@ -43,4 +43,21 @@ mod tests {
         assert_eq!(f.next(), Some(29));
         assert_eq!(f.next(), None);
     }
+
+    #[test]
+    fn test_factor_6() {
+        let mut f = factors(6);
+        assert_eq!(f.next(), Some(2));
+        assert_eq!(f.next(), Some(3));        
+        assert_eq!(f.next(), None);
+    }
+
+    #[test]
+    fn test_factor_12() {
+        let mut f = factors(12);
+        assert_eq!(f.next(), Some(2));
+        assert_eq!(f.next(), Some(2));
+        assert_eq!(f.next(), Some(3));        
+        assert_eq!(f.next(), None);
+    }
 }

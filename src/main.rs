@@ -1,12 +1,5 @@
 use clap::Clap;
-
-mod p0001;
-mod p0002;
-mod p0003;
-mod p0004;
-mod p0005;
-mod primes;
-
+use euler::*;
 
 #[derive(Clap)]
 #[clap(version = "1.0", author = "Brian McCallister <brianm@skife.org>")]
