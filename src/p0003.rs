@@ -1,5 +1,5 @@
-use clap::Clap;
 use super::primes;
+use clap::Clap;
 
 /// Largest prime factor
 ///
@@ -20,7 +20,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use super::*;    
+    use super::*;
 
     #[test]
     fn test_run() {

@@ -7,7 +7,7 @@ use itertools::Itertools;
 /// largest palindrome made from the product of two
 /// 2-digit numbers is 9009 = 91 × 99.
 ///
-/// Find the largest palindrome made from the product 
+/// Find the largest palindrome made from the product
 /// of two 3-digit numbers.
 #[derive(Clap)]
 pub struct Solution {
@@ -19,15 +19,17 @@ impl Solution {
     pub fn run(&self) -> u64 {
         (1..self.limit)
             .permutations(2)
-            .map(|v| v[0] * v[1])            
+            .map(|v| v[0] * v[1])
             .filter(is_palindrome)
             .max()
             .unwrap_or(0)
     }
 }
 
-fn is_palindrome(num: &u64) -> bool {    
-    let forward = num.to_string();    
+#[allow(clippy::trivially_copy_pass_by_ref)]
+// allowed in order to match signature for .filter(...)
+fn is_palindrome(num: &u64) -> bool {
+    let forward = num.to_string();
     let reverse = forward.chars().rev().collect::<String>();
     forward == reverse
 }

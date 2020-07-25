@@ -24,6 +24,9 @@ enum Command {
 
     #[clap(name = "5")]
     Five(p0005::Solution),
+
+    #[clap(name = "6")]
+    Six(p0006::Solution),
 }
 
 fn main() {
@@ -35,5 +38,6 @@ fn main() {
         Command::Three(sol) => println!("{}", sol.run()),
         Command::Four(sol) => println!("{}", sol.run()),
         Command::Five(sol) => println!("{}", sol.run()),
+        Command::Six(sol) => println!("{}", sol.run()),
     }
 }

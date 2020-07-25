@@ -32,8 +32,8 @@ pub fn factors(n: usize) -> PrimeFactors {
 
 #[cfg(test)]
 mod tests {
-    use super::*; 
-    
+    use super::*;
+
     #[test]
     fn test_fib() {
         let mut f = factors(13195);
@@ -48,7 +48,7 @@ mod tests {
     fn test_factor_6() {
         let mut f = factors(6);
         assert_eq!(f.next(), Some(2));
-        assert_eq!(f.next(), Some(3));        
+        assert_eq!(f.next(), Some(3));
         assert_eq!(f.next(), None);
     }
 
@@ -57,7 +57,7 @@ mod tests {
         let mut f = factors(12);
         assert_eq!(f.next(), Some(2));
         assert_eq!(f.next(), Some(2));
-        assert_eq!(f.next(), Some(3));        
+        assert_eq!(f.next(), Some(3));
         assert_eq!(f.next(), None);
     }
 }
