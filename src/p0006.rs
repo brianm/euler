@@ -23,10 +23,11 @@ impl Solution {
     }
 }
 
-fn doit(upto: usize) -> usize {
-    let (sum_of_squares, sums) =
-        (1..upto + 1).fold((0, 0), |(ssq, sum), n| (ssq + (n * n), (sum + n)));
-    sums.pow(2) - sum_of_squares
+fn doit(limit: usize) -> usize {
+    let sum = limit * (limit + 1)/2;
+    let sum_sq = ((2 * limit) + 1) * (limit + 1) * limit/6;
+    sum.pow(2) - sum_sq
+
 }
 
 #[cfg(test)]
